@@ -17,7 +17,7 @@
 //Create a Jenkins pipeline build with "Project is parameterised" and declare the following string settings.
   // "iqAppID"     - DESCRIPTION: IQ Server Application ID to evaluate against
   // "iqStage"     - DESCRIPTION: IQ Server stage to evaluate against, Options are: "build | stage-release | release"
-  // "DEPLOY_REPO" - DESCRIPTION: Deployment repository for your built artefact. Usually "maven-releases"
+  // "DEPLOY_REPO" - DESCRIPTION: Deployment repository for your built artefact. Usually "maven-releases" or "maven-snapshots"
   // "groupId"     - DESCRIPTION: groupId taken from the project pom.xml
   // "artifactId"  - DESCRIPTION: artifactId taken from the project pom.xml
   // "version"     - DESCRIPTION: version taken from the project pom.xml
@@ -28,7 +28,7 @@ pipeline {
 
     environment {
        ARTEFACT_NAME = "${WORKSPACE}/target/${artifactId}-${version}.${packaging}"
-       //DEPLOY_REPO = 'maven-development'
+       //DEPLOY_REPO = 'maven-releases'
        TAG_FILE = "${WORKSPACE}/tag.json"
        IQ_SCAN_URL = ""
        iqStage = "${iqStage}"
